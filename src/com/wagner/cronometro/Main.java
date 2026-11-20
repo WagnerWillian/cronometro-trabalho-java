@@ -19,7 +19,7 @@ public class Main {
             System.out.println("=                =");
             System.out.println("==================");
 
-            if(scanner.hasNextInt()) {
+            if (scanner.hasNextInt()) {
 
                 option = scanner.nextInt();
 
@@ -63,7 +63,7 @@ public class Main {
                         System.out.println("Opção inválida");
                     }
                 }
-            }else{
+            } else {
                 System.out.println("Entrada inválida digite apenas numeros!");
                 scanner.nextLine();
             }
@@ -72,7 +72,8 @@ public class Main {
 
         scanner.close();
     }
-    private static double converterSegundos(long nanossegundos){
+
+    private static double converterSegundos(long nanossegundos) {
         return nanossegundos / 1_000_000_000.0;
     }
 }

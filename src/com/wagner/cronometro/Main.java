@@ -19,47 +19,53 @@ public class Main {
             System.out.println("=                =");
             System.out.println("==================");
 
-            option = scanner.nextInt();
+            if(scanner.hasNextInt()) {
 
-            switch (option) {
-                case 1 -> {
-                    if (cronometro.iniciar()) {
-                        System.out.println("Iniciando");
-                    } else {
-                        System.out.println("Sessão já iniciada");
-                    }
-                }
-                case 2 -> {
-                    if (cronometro.pausar()) {
-                        double segundo = converterSegundos(cronometro.getTempoTotal());
-                        System.out.printf("Sessão pausada tempo decorrido:  %.2f\n",segundo);
-                    } else {
-                        System.out.println("Sessão já pausada");
-                    }
-                }
-                case 3 -> {
-                    if (cronometro.retomar()) {
-                        System.out.println("Sessão retomada");
-                    } else {
-                        System.out.println("Não é possivel retomar");
-                    }
-                }
-                case 4 -> {
-                    if (cronometro.encerrar()) {
-                        double segundo = converterSegundos(cronometro.getTempoTotal());
-                        System.out.println("Encerrando a sessão\n");
-                        System.out.printf("Sessão pausada tempo decorrido:  %.2f\n",segundo);
-                    } else {
-                        System.out.println("Programa encerrado sem sessão");
-                    }
-                }
-                case 0 -> {
+                option = scanner.nextInt();
 
-                    System.out.println("Saindo");
+                switch (option) {
+                    case 1 -> {
+                        if (cronometro.iniciar()) {
+                            System.out.println("Iniciando");
+                        } else {
+                            System.out.println("Sessão já iniciada");
+                        }
+                    }
+                    case 2 -> {
+                        if (cronometro.pausar()) {
+                            double segundo = converterSegundos(cronometro.getTempoTotal());
+                            System.out.printf("Sessão pausada tempo decorrido:  %.2f\n", segundo);
+                        } else {
+                            System.out.println("Sessão já pausada");
+                        }
+                    }
+                    case 3 -> {
+                        if (cronometro.retomar()) {
+                            System.out.println("Sessão retomada");
+                        } else {
+                            System.out.println("Não é possivel retomar");
+                        }
+                    }
+                    case 4 -> {
+                        if (cronometro.encerrar()) {
+                            double segundo = converterSegundos(cronometro.getTempoTotal());
+                            System.out.println("Encerrando a sessão\n");
+                            System.out.printf("Sessão encerrada tempo decorrido:  %.2f\n", segundo);
+                        } else {
+                            System.out.println("Programa encerrado sem sessão");
+                        }
+                    }
+                    case 0 -> {
+
+                        System.out.println("Saindo");
+                    }
+                    default -> {
+                        System.out.println("Opção inválida");
+                    }
                 }
-                default -> {
-                    System.out.println("Opção inválida");
-                }
+            }else{
+                System.out.println("Entrada inválida digite apenas numeros!");
+                scanner.nextLine();
             }
 
         }

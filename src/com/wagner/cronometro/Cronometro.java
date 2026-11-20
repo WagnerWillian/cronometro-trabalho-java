@@ -30,6 +30,7 @@ public class Cronometro {
 
     public boolean iniciar() {
         if (!estaPausado && !sessaoAtiva) {
+            this.tempoTotal = 0;
             play();
             return true;
         } else {
@@ -72,7 +73,6 @@ public class Cronometro {
     private void finalizarSessao() {
         sessaoAtiva = false;
         estaPausado = false;
-        this.tempoTotal = 0;
     }
 }
 

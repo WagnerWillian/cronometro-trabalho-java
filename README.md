@@ -10,59 +10,59 @@ O projeto surgiu da necessidade de acompanhar o tempo gasto na execução de tar
 
 
 
-Além de sua finalidade prática, o projeto tem como objetivo consolidar conhecimentos de \*\*Java, Programação Orientada a Objetos (POO), lógica de programação e organização de código\*\*.
+Além de sua finalidade prática, o projeto tem como objetivo consolidar conhecimentos de **Java, Programação Orientada a Objetos (POO), lógica de programação e organização de código**.
 
 
 
-\## 🚀 Funcionalidades
+## 🚀 Funcionalidades
 
 
 
-\- \*\*Iniciar cronômetro:\*\* inicia a contagem do tempo.
+- **Iniciar cronômetro:** inicia a contagem do tempo.
 
-\- \*\*Pausar cronômetro:\*\* interrompe temporariamente a contagem.
+- **Pausar cronômetro:** interrompe temporariamente a contagem.
 
-\- \*\*Retomar cronômetro:\*\* continua a contagem sem contabilizar o período pausado.
+- **Retomar cronômetro:** continua a contagem sem contabilizar o período pausado.
 
-\- \*\*Encerrar sessão:\*\* finaliza a contagem e apresenta o tempo total.
+- **Encerrar sessão:** finaliza a contagem e apresenta o tempo total.
 
-\- \*\*Validação de operações:\*\* impede ações incompatíveis com o estado atual do cronômetro.
-
-
-
-\## 🛠️ Tecnologias utilizadas
+- **Validação de operações:** impede ações incompatíveis com o estado atual do cronômetro.
 
 
 
-\- Java 21
-
-\- IntelliJ IDEA
-
-\- Git e GitHub
+## 🛠️ Tecnologias utilizadas
 
 
 
-\## 🧠 Conceitos aplicados
+- Java 21
+
+- IntelliJ IDEA
+
+- Git e GitHub
 
 
 
-\- Programação Orientada a Objetos (POO)
-
-\- Classes, objetos e métodos
-
-\- Encapsulamento e separação de responsabilidades
-
-\- Estruturas condicionais
-
-\- Validação de regras de negócio
-
-\- Controle de estados da aplicação
-
-\- Medição de intervalos utilizando `System.nanoTime()`
+## 🧠 Conceitos aplicados
 
 
 
-\## ⚙️ Como funciona
+- Programação Orientada a Objetos (POO)
+
+- Classes, objetos e métodos
+
+- Encapsulamento e separação de responsabilidades
+
+- Estruturas condicionais
+
+- Validação de regras de negócio
+
+- Controle de estados da aplicação
+
+- Medição de intervalos utilizando `System.nanoTime()`
+
+
+
+## ⚙️ Como funciona
 
 
 
@@ -82,7 +82,7 @@ A aplicação também realiza validações para evitar operações inválidas, c
 
 
 
-\## 🧪 Testes
+## 🧪 Testes
 
 
 
@@ -90,35 +90,35 @@ Foram realizados testes manuais para verificar o comportamento das principais fu
 
 
 
-\- Início da contagem.
+- Início da contagem.
 
-\- Pausa e retomada.
+- Pausa e retomada.
 
-\- Encerramento da sessão.
+- Encerramento da sessão.
 
-\- Cálculo do tempo acumulado.
+- Cálculo do tempo acumulado.
 
-\- Tentativas de executar operações inválidas.
-
-
-
-\## 📌 Próximas melhorias
+- Tentativas de executar operações inválidas.
 
 
 
-\- \[ ] Cadastro do nome da tarefa.
-
-\- \[ ] Registro das sessões realizadas.
-
-\- \[ ] Histórico de atividades e tempos registrados.
-
-\- \[ ] Persistência dos dados.
-
-\- \[ ] Desenvolvimento de interface gráfica.
+## 📌 Próximas melhorias
 
 
 
-\## 📚 Sobre o projeto
+- [ ] Cadastro do nome da tarefa.
+
+- [ ] Registro das sessões realizadas.
+
+- [ ] Histórico de atividades e tempos registrados.
+
+- [ ] Persistência dos dados.
+
+- [ ] Desenvolvimento de interface gráfica.
+
+
+
+## 📚 Sobre o projeto
 
 
 

@@ -11,6 +11,10 @@ public class Cronometro {
 
     private boolean sessaoAtiva = false;
 
+    public boolean isSessaoAtiva() {
+        return sessaoAtiva;
+    }
+
     public long getTempoTotal() {
         return tempoTotal;
     }

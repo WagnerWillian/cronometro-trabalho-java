@@ -78,5 +78,6 @@ public class Cronometro {
         sessaoAtiva = false;
         estaPausado = false;
     }
+
 }
 

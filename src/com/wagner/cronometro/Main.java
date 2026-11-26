@@ -1,13 +1,21 @@
 package com.wagner.cronometro;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Cronometro cronometro = new Cronometro();
+        List<SessaoTrabalho> sessoes = new ArrayList<>();
 
+        String nomeSessao = null;
+        long tempoSessao;
         int option = -1;
+
 
         while (option != 0) {
             System.out.println("====CRONOMETRO====");
@@ -27,11 +35,16 @@ public class Main {
 
                 switch (option) {
                     case 1 -> {
-                        if (cronometro.iniciar()) {
-                            System.out.println("Iniciando");
+                        if (!cronometro.isSessaoAtiva()) {
+                            nomeSessao = solicitarNomeSessao(scanner);
+                            if (cronometro.iniciar()) {
+                                System.out.println(nomeSessao + " iniciado.");
+                            }
                         } else {
-                            System.out.println("Sessão já iniciada");
+                            System.out.println("Sessão já iniciada! " + nomeSessao);
+
                         }
+
                     }
                     case 2 -> {
                         if (cronometro.pausar()) {
@@ -54,9 +67,12 @@ public class Main {
                     }
                     case 4 -> {
                         if (cronometro.encerrar()) {
-                            double segundo = converterSegundos(cronometro.getTempoTotal());
+                            tempoSessao = cronometro.getTempoTotal();
+                            double segundo = converterSegundos(tempoSessao);
                             System.out.println("Encerrando a sessão\n");
-                            System.out.printf("Sessão encerrada tempo decorrido:  %.2f\n", segundo);
+                            sessoes.add(new SessaoTrabalho(nomeSessao, tempoSessao));
+                            System.out.printf("Sessão %s encerrada tempo decorrido:  %.2f\n", nomeSessao, segundo);
+
                         } else {
                             System.out.println("Não existe sessão ativa para encerrar.");
                         }
@@ -97,10 +113,27 @@ public class Main {
             }
 
         }
-
+        sessoes.forEach(System.out::println);
         scanner.close();
     }
+
+    private static String solicitarNomeSessao(Scanner scanner) {
+        String nome;
+        while (true) {
+            System.out.println("Digite um nome para esta sessão:");
+            nome = scanner.nextLine();
+
+            if (nome.isBlank()) {
+                System.out.println("Precisa conter informação no nome");
+            } else {
+                break;
+            }
+        }
+        return nome;
+    }
+
     private static double converterSegundos(long nanossegundos) {
         return nanossegundos / 1_000_000_000.0;
     }
 }
+

@@ -3,6 +3,7 @@ package com.wagner.cronometro;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.StructureViolationException;
 
 public class Main {
 
@@ -13,7 +14,6 @@ public class Main {
         List<SessaoTrabalho> sessoes = new ArrayList<>();
 
         String nomeSessao = null;
-        long tempoSessao;
         int option = -1;
 
 
@@ -24,6 +24,7 @@ public class Main {
             System.out.println("= 2 - PAUSAR     =");
             System.out.println("= 3 - RETOMAR    =");
             System.out.println("= 4 - ENCERRAR   =");
+            System.out.println("= 5 - HISTÓRICO  =");
             System.out.println("= 0 - SAIR       =");
             System.out.println("=                =");
             System.out.println("==================");
@@ -67,7 +68,7 @@ public class Main {
                     }
                     case 4 -> {
                         if (cronometro.encerrar()) {
-                            tempoSessao = cronometro.getTempoTotal();
+                            var tempoSessao = cronometro.getTempoTotal();
                             double segundo = converterSegundos(tempoSessao);
                             System.out.println("Encerrando a sessão\n");
                             sessoes.add(new SessaoTrabalho(nomeSessao, tempoSessao));
@@ -77,31 +78,14 @@ public class Main {
                             System.out.println("Não existe sessão ativa para encerrar.");
                         }
                     }
+                    case 5 -> {
+                        mostrarHistorico(sessoes);
+                    }
                     case 0 -> {
-                        if (cronometro.isSessaoAtiva()) {
-                            int opt = -1;
-                            while (opt != 0 && opt != 1) {
-                                System.out.println("Sair sem salvar? 0 - Sim / 1 - Não");
-                                if (scanner.hasNextInt()) {
-                                    opt = scanner.nextInt();
-                                    scanner.nextLine();
-                                    if (opt == 1) {
-                                        option = -1;
-                                        System.out.println("Retornando ao menu!");
-                                    } else if (opt == 0) {
-                                        System.out.println("Saindo");
-                                    } else {
-                                        System.out.println("Opção invalida");
-                                    }
-
-                                } else {
-                                    System.out.println("opção invalida digite somente números");
-                                    scanner.nextLine();
-                                }
-                            }
-                        } else {
-                            System.out.println("Saindo");
+                        if (!(encerramentoPrograma(scanner, cronometro))) {
+                            option = -1;
                         }
+
                     }
                     default -> {
                         System.out.println("Opção inválida");
@@ -113,7 +97,7 @@ public class Main {
             }
 
         }
-        sessoes.forEach(System.out::println);
+        mostrarHistorico(sessoes);
         scanner.close();
     }
 
@@ -132,8 +116,53 @@ public class Main {
         return nome;
     }
 
+    private static void mostrarHistorico(List<SessaoTrabalho> sessoes) {
+        if (sessoes.isEmpty()) {
+            System.out.println("Nenhuma sessão registrada.");
+        } else {
+            System.out.println("===============Histórico===============");
+            for (SessaoTrabalho sessao : sessoes) {
+                System.out.printf("  %-10.10s        Tempo:%10.2fs  \n", sessao.nome(), converterSegundos(sessao.tempoNanos()));
+            }
+            System.out.println("=======================================");
+        }
+    }
+
     private static double converterSegundos(long nanossegundos) {
         return nanossegundos / 1_000_000_000.0;
     }
+
+    private static boolean encerramentoPrograma(Scanner scanner, Cronometro cronometro) {
+        if (cronometro.isSessaoAtiva()) {
+            int opt;
+            while (true) {
+                System.out.println("Sair sem salvar? 0 - Sim / 1 - Não");
+                if (scanner.hasNextInt()) {
+                    opt = scanner.nextInt();
+                    scanner.nextLine();
+                    if (opt == 1) {
+                        System.out.println("Retornando ao menu!");
+                        return false;
+                    } else if (opt == 0) {
+                        System.out.println("Saindo");
+                        return true;
+                    } else {
+                        System.out.println("Opção invalida");
+
+                    }
+
+                } else {
+                    System.out.println("opção invalida digite somente números");
+                    scanner.nextLine();
+                }
+            }
+        } else {
+            System.out.println("Saindo");
+            return true;
+
+        }
+
+    }
+
 }
 

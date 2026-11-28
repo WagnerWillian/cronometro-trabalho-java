@@ -18,16 +18,7 @@ public class Main {
 
 
         while (option != 0) {
-            System.out.println("====CRONOMETRO====");
-            System.out.println("=                =");
-            System.out.println("= 1 - INICIAR    =");
-            System.out.println("= 2 - PAUSAR     =");
-            System.out.println("= 3 - RETOMAR    =");
-            System.out.println("= 4 - ENCERRAR   =");
-            System.out.println("= 5 - HISTÓRICO  =");
-            System.out.println("= 0 - SAIR       =");
-            System.out.println("=                =");
-            System.out.println("==================");
+            exibirMenu();
 
             if (scanner.hasNextInt()) {
 
@@ -42,7 +33,7 @@ public class Main {
                                 System.out.println(nomeSessao + " iniciado.");
                             }
                         } else {
-                            System.out.println("Sessão já iniciada! " + nomeSessao);
+                            System.out.println("Sessão já iniciada!" + nomeSessao);
 
                         }
 
@@ -99,6 +90,19 @@ public class Main {
         }
         mostrarHistorico(sessoes);
         scanner.close();
+    }
+
+    private static void exibirMenu() {
+        System.out.println("====CRONOMETRO====");
+        System.out.println("=                =");
+        System.out.println("= 1 - INICIAR    =");
+        System.out.println("= 2 - PAUSAR     =");
+        System.out.println("= 3 - RETOMAR    =");
+        System.out.println("= 4 - ENCERRAR   =");
+        System.out.println("= 5 - HISTÓRICO  =");
+        System.out.println("= 0 - SAIR       =");
+        System.out.println("=                =");
+        System.out.println("==================");
     }
 
     private static String solicitarNomeSessao(Scanner scanner) {
